@@ -2,8 +2,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define COMPARE(a, b) (((a) > (b)) - ((a) < (b)))
+
+// Print Functions
+void Print_int(void* a) {
+    printf("%d, \n", *(int*)a);
+}
+void Print_float(void* a) {
+    printf("%f, \n", *(float*)a);
+}
+void Print_double(void* a) {
+    printf("%lf, \n", *(double*)a);
+}
+
 // Compare Functions
+
+// compare macro funtion
+#define COMPARE(a, b) (((a) > (b)) - ((a) < (b)))
+// Compare functions
+#
 int Compare_int(void* a, void* b) {
     return COMPARE(*(int*)a, *(int*)b);
 }
@@ -13,11 +29,17 @@ int Compare_float(void* a, void* b) {
 int Compare_double(void* a, void* b){
     return COMPARE(*(double*)a, *(double*)b);
 }
-void New_Binarytree(BinaryTree* tree, size_t ST, CompareFn cf) {  
+
+// Constractor
+
+void New_Binarytree(BinaryTree* tree, size_t ST, CompareFn cf, PrintFn pf) {  
     tree->head = NULL;
     tree->size_Type = ST;
     tree->compare_function = cf;
+    tree->print_function = pf;
 }
+
+// Deconstractor
 
 static void Free_Node_BST(Node* node) {
 	if (node == NULL) return;
@@ -33,6 +55,9 @@ void Free_Binarytree(BinaryTree* tree) {
     Free_Node_BST(tree->head);
     tree->head = NULL;
 }
+
+// Adding element functions
+
 static void Add_element_Node_BST(BinaryTree* tree, Node** node, void* Ndata){
     if(*node == NULL) {
         *node = malloc(sizeof(Node));
@@ -48,7 +73,6 @@ static void Add_element_Node_BST(BinaryTree* tree, Node** node, void* Ndata){
     else if (r < 0) {Add_element_Node_BST(tree, &(*node)->left, Ndata);return;} 
     return;
 }
-
 void Add_element_Binarytree(BinaryTree* tree,void* Ndata) {
     if (!(tree->head)){
         tree->head = malloc(sizeof(Node));
@@ -65,17 +89,16 @@ void Add_element_Binarytree(BinaryTree* tree,void* Ndata) {
     return;
 }
 
-static void Print_Node_BST_InOrder_double(Node* node){
+// Printing tree functions
+
+static void Print_Node_BST_InOrder(Node* node,BinaryTree* tree){
     if(!node) return;
     Print_Node_BST_InOrder_double(node->left);
-    printf("%f, ", *(double*)node->data);
+    tree->print_function(node->data);
     Print_Node_BST_InOrder_double(node->right);
     return;
 }
-
-void Print_Binarytree_InOrder_double(BinaryTree* tree){
-    Print_Node_BST_InOrder_double(tree->head);
+void Print_Binarytree_InOrder(BinaryTree* tree){
+    Print_Node_BST_InOrder(tree->head,tree);
 }
 
-//void Print_Binarytree_TREE(){
-//}
