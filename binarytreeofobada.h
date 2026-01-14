@@ -30,7 +30,7 @@ typedef struct BinaryTree{
 void New_Binarytree(BinaryTree* tree,size_t ST, CompareFn cf, PrintFn pf);
 void Free_Binarytree(BinaryTree* tree);
 void Add_element_Binarytree(BinaryTree* tree, void* Ndata);
-void Print_Binarytree_InOrder_double(BinaryTree* tree);
+void Print_Binarytree_InOrder(BinaryTree* tree);
 
 #define BST_init(tree, type) New_Binarytree(&tree, sizeof(type), (Compare_##type), (Print_##type))
 #endif

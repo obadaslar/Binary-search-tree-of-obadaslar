@@ -5,13 +5,13 @@
 
 // Print Functions
 void Print_int(void* a) {
-    printf("%d, \n", *(int*)a);
+    printf("%d, ", *(int*)a);
 }
 void Print_float(void* a) {
-    printf("%f, \n", *(float*)a);
+    printf("%f, ", *(float*)a);
 }
 void Print_double(void* a) {
-    printf("%lf, \n", *(double*)a);
+    printf("%lf, ", *(double*)a);
 }
 
 // Compare Functions
@@ -93,9 +93,9 @@ void Add_element_Binarytree(BinaryTree* tree,void* Ndata) {
 
 static void Print_Node_BST_InOrder(Node* node,BinaryTree* tree){
     if(!node) return;
-    Print_Node_BST_InOrder_double(node->left);
+    Print_Node_BST_InOrder(node->left, tree);
     tree->print_function(node->data);
-    Print_Node_BST_InOrder_double(node->right);
+    Print_Node_BST_InOrder(node->right, tree);
     return;
 }
 void Print_Binarytree_InOrder(BinaryTree* tree){
