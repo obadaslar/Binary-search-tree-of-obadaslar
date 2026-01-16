@@ -102,3 +102,12 @@ void Print_Binarytree_InOrder(BinaryTree* tree){
     Print_Node_BST_InOrder(tree->head,tree);
 }
 
+// Adding an array
+
+void Add_array_Binarytree(BinaryTree* tree, size_t size_of_arr,void* array){
+    for(size_t i = 0; i < size_of_arr/tree->size_Type; i++){
+        char* base = (char*)array;
+        char* Ndata = (base+(i * tree->size_Type));
+        Add_element_Binarytree(tree,Ndata);
+    }
+}

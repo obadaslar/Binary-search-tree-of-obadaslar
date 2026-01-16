@@ -31,6 +31,8 @@ void New_Binarytree(BinaryTree* tree,size_t ST, CompareFn cf, PrintFn pf);
 void Free_Binarytree(BinaryTree* tree);
 void Add_element_Binarytree(BinaryTree* tree, void* Ndata);
 void Print_Binarytree_InOrder(BinaryTree* tree);
+void Add_array_Binarytree(BinaryTree* tree, size_t size_of_arr,void* array);
 
 #define BST_init(tree, type) New_Binarytree(&tree, sizeof(type), (Compare_##type), (Print_##type))
+#define BST_Add_Arr(tree, arr) Add_array_Binarytree(&tree, sizeof(arr), arr)
 #endif
