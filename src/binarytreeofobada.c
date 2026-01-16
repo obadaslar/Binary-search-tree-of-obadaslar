@@ -19,7 +19,7 @@ void Print_double(void* a) {
 // compare macro funtion
 #define COMPARE(a, b) (((a) > (b)) - ((a) < (b)))
 // Compare functions
-#
+
 int Compare_int(void* a, void* b) {
     return COMPARE(*(int*)a, *(int*)b);
 }
