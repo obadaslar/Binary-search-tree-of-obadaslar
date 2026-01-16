@@ -1,7 +1,4 @@
 #include "binarytreeofobada.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 // Print Functions
 void Print_int(void* a) {
@@ -15,10 +12,6 @@ void Print_double(void* a) {
 }
 
 // Compare Functions
-
-// compare macro funtion
-#define COMPARE(a, b) (((a) > (b)) - ((a) < (b)))
-// Compare functions
 
 int Compare_int(void* a, void* b) {
     return COMPARE(*(int*)a, *(int*)b);
